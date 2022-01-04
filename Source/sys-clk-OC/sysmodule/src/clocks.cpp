@@ -35,19 +35,6 @@ void Clocks::Initialize()
 {
     Result rc = 0;
 
-    // Check if it's Mariko
-    u64 hardware_type = 0;
-    splInitialize();
-    splGetConfig(SplConfigItem_HardwareType, &hardware_type);
-    splExit();
-
-    switch (hardware_type) {
-        case 0: //Icosa
-        case 1: //Copper
-            ERROR_THROW("[!] Erista is not supported!");
-            return;
-    }
-
     if(hosversionAtLeast(8,0,0))
     {
         rc = clkrstInitialize();
